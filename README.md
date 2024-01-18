@@ -31,10 +31,6 @@ At the end of each game, it will be revealed if you guessed correctly and in how
 
 ## Screenshots
 
-![Welcome](./screenshots/welcome.png)
-![Insert number](./screenshots/insertNumber.png)
-![Number](./screenshots/numberMax.png)
-![Correct number](./screenshots/correct.png)
-![Incorrect number](./screenshots/incorrect.png)
+![Alt text](welcome-1.png) ![Alt text](correct.png) ![Alt text](incorrect.png) ![Alt text](insertNumber.png) ![Alt text](numberMax.png)
 
 Have Fun Guessing and Challenging Your Intuition Skills! 
