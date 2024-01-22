@@ -31,6 +31,12 @@ At the end of each game, it will be revealed if you guessed correctly and in how
 
 ## Screenshots
 
-![Alt text](welcome-1.png) ![Alt text](correct.png) ![Alt text](incorrect.png) ![Alt text](insertNumber.png) ![Alt text](numberMax.png)
+![](screenshots/init.png)
+![](screenshots/facil.png)
+![](screenshots/menor.png)
+![](screenshots/numeroMayor.png)
+![](screenshots/correct.png)
+![](screenshots/incorrect.png)
+
 
 Have Fun Guessing and Challenging Your Intuition Skills! 

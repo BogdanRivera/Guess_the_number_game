@@ -1,61 +1,112 @@
-var elem1 = document.getElementById("respuesta1");
-var elem2 = document.getElementById("respuesta2"); 
-var imagen = document.getElementById("imagenResultado");
+let numeroSecreto = 0;
+let intentos = 0; 
+let valorMaximo = 10; 
+let maxIntentos = 3; 
 
-let opcion = 1; 
+let estado = 0; //Reutilizar el elemento del formulario para determinar la selección de dificultad o juego
 
-while(opcion==1){
-let nivelDificultad = prompt("Ingresa un nivel de dificultad: \n 1.Fácil (del 1 al 10)\n 2.Medio (del 1 al 100)\n 3.Dificil (del 1 al 1000) \n");
-let numeroDificultad = 10; 
-let nIntentos = 4; 
+let dificultad = 1; //1 = Fácil, 2 = Medio, 3 = Dificil 
 
-if(nivelDificultad==1){
-    numeroDificultad = 10;
-}else if(nivelDificultad==2){
-    numeroDificultad = 100; 
-    nIntentos = 7; 
-}else{
-    numeroDificultad=1000;
-    nIntentos = 11; 
+function asignarTextoElemento(elemento, texto){
+    let elementoHTML = document.querySelector(elemento);
+    elementoHTML.innerHTML = texto;
+    return; //Una buena práctica es retornar aunque no sea nada
 }
 
-// Genera un número decimal aleatorio entre 0 (inclusive) y 1 (exclusivo)
-let numeroAleatorioDecimal = Math.random();
-
-// Escala el número para que esté en el rango de 1 a 10
-let numeroAleatorioEnRango = Math.floor(numeroAleatorioDecimal * numeroDificultad) + 1;
-let numeroSecreto = numeroAleatorioEnRango;
-
-
-let cuentaIntentos = 1; 
-let palabra = 'vez'; 
-while(cuentaIntentos!= numeroSecreto){
-    let numeroUsuario = prompt(`Indícame un número del 1 al ${numeroDificultad}`);
-    if(numeroUsuario == numeroSecreto){
-        alert(`Acertaste, el número es ${numeroUsuario}!. Lo hiciste en ${cuentaIntentos} ${cuentaIntentos==1 ? 'vez':'veces'}`);
-        elem1.innerHTML = "Correcto!";
-        elem2.innerHTML = "Descubriste el número secreto";
-        imagen.src = "./img/trophy.png";
-        break;
-    }else{
-        if(numeroUsuario>numeroSecreto){
-            alert("El número secreto es menor"); 
+function verificar(){
+    let numeroUsuario = parseInt(document.getElementById('valorUsuario').value);
+    switch (estado){
+        case 0: 
+        if(numeroUsuario===2){
+            valorMaximo = 100; 
+            estado = 1; 
+            maxIntentos = 7; 
+        }else if(numeroUsuario==3){
+            valorMaximo = 1000; 
+            estado = 1;
+            maxIntentos = 11;  
         }else{
-            alert("El número secreto es mayor"); 
+            valorMaximo = 10; 
+            estado = 1
+            maxIntentos = 4;
         }
-        cuentaIntentos += 1; 
-        palabra = 'veces'; 
-        if(cuentaIntentos==nIntentos){
-            alert(`Lo siento, no acertaste, has llegado al máximo de intentos(${nIntentos-1}) el número secreto era ${numeroSecreto} y tu pusiste ${numeroUsuario}`);
-            elem1.innerHTML = "Incorrecto!";
-            elem2.innerHTML = "No descubriste el número secreto";
-            imagen.src = "./img/sad.png";
-            break;
+        condicionesInicialesJuego();
+        console.log(intentos); 
+        break; 
+
+        case 1:
+            console.log(intentos); 
+            if(intentos < maxIntentos){
+            if(numeroUsuario<numeroSecreto){
+                asignarTextoElemento('p','El número secreto es mayor');
+            }else if(numeroUsuario>numeroSecreto){
+                asignarTextoElemento('p','El número secreto es menor');
+            }else if(numeroUsuario===numeroSecreto){
+                asignarTextoElemento('p',`¡Acertaste el número en ${intentos} ${(intentos === 1) ? 'vez':'veces'}!`);
+                document.getElementById('reiniciar').removeAttribute('disabled');
+                estado = 0;
+                document.getElementById('botonOpcion').setAttribute('disabled',true); 
+                return; 
+            }else{
+                asignarTextoElemento('p','Ingresa un valor');
+            }
+            intentos ++; 
+            limpiarCaja();
         }
-        //alert(`Lo siento, no acertaste, el número secreto era ${numeroSecreto} y tu pusiste ${numeroUsuario}`);
+        if(intentos==maxIntentos){
+        asignarTextoElemento('p',`No acertaste, el número era ${numeroSecreto}. Intentos = ${intentos-1}`);
+        document.getElementById('reiniciar').removeAttribute('disabled');
+        document.getElementById('botonOpcion').setAttribute('disabled',true);
+        estado = 0;  
+        }
+        break; 
     }
-} 
-
-
-opcion = prompt("Quieres volver a jugar?\n1. Si\n2. No");
+    return;    
 }
+
+function limpiarCaja(){
+    document.querySelector('#valorUsuario').value = ''; 
+
+}
+
+function generarNumeroSecreto(){
+    let numeroSecreto = Math.floor(Math.random()*valorMaximo)+1; 
+    return numeroSecreto; 
+}
+
+function condicionesInicialesDificultad(){
+    let form = document.getElementById("valorUsuario");
+    let boton = document.getElementById('botonOpcion'); 
+    asignarTextoElemento('h1','Juego del número secreto');
+    asignarTextoElemento('p','Indica un nivel de dificultad: </br> 1. Facil (1 al 10) 2. Medio (1 al 100) </br> 3. Dificil (1 al 1000)');
+    document.getElementById('reiniciar').setAttribute('disabled',true);
+    boton.innerHTML = "Selecciona dificultad";
+    form.setAttribute('max',3); 
+    intentos = 1;
+    boton.removeAttribute('disabled'); 
+}
+
+function condicionesInicialesJuego(){
+    asignarTextoElemento('p',`Indica un número del 1 al ${valorMaximo}`);
+    limpiarCaja();
+    numeroSecreto = generarNumeroSecreto();
+    document.getElementById('reiniciar').setAttribute('disabled',true);
+    document.getElementById('botonOpcion').innerHTML = "Ingresa número"; 
+    document.getElementById('valorUsuario').setAttribute('max',valorMaximo); 
+}
+
+function reiniciarJuego(){
+    //Limpiar la caja
+    limpiarCaja();
+    //Indicar mensaje de intervalos de números
+    condicionesInicialesDificultad();
+    //Generar el número aleatorio 
+    //Inicializar el número de intentos
+    //Deshabilitar el botón de intentos
+}
+
+condicionesInicialesDificultad();
+
+
+
+
