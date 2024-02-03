@@ -38,9 +38,9 @@ function verificar(){
             console.log(intentos); 
             if(intentos < maxIntentos){
             if(numeroUsuario<numeroSecreto){
-                asignarTextoElemento('p','El número secreto es mayor');
+                asignarTextoElemento('p',`El número secreto es mayor <br/>(${intentos} de ${maxIntentos-1})`);
             }else if(numeroUsuario>numeroSecreto){
-                asignarTextoElemento('p','El número secreto es menor');
+                asignarTextoElemento('p',`El número secreto es menor <br/>(${intentos} de ${maxIntentos-1})`);
             }else if(numeroUsuario===numeroSecreto){
                 asignarTextoElemento('p',`¡Acertaste el número en ${intentos} ${(intentos === 1) ? 'vez':'veces'}!`);
                 document.getElementById('reiniciar').removeAttribute('disabled');
@@ -54,7 +54,7 @@ function verificar(){
             limpiarCaja();
         }
         if(intentos==maxIntentos){
-        asignarTextoElemento('p',`No acertaste, el número era ${numeroSecreto}. Intentos = ${intentos-1}`);
+        asignarTextoElemento('p',`No acertaste, el número era ${numeroSecreto} <br/> (${intentos - 1} de ${maxIntentos-1})`);
         document.getElementById('reiniciar').removeAttribute('disabled');
         document.getElementById('botonOpcion').setAttribute('disabled',true);
         estado = 0;  
