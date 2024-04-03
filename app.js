@@ -38,23 +38,23 @@ function verificar(){
             console.log(intentos); 
             if(intentos < maxIntentos){
             if(numeroUsuario<numeroSecreto){
-                asignarTextoElemento('p',`El número secreto es mayor <br/>(${intentos} de ${maxIntentos-1})`);
+                asignarTextoElemento('p',`The secret number is greater <br/>(${intentos} out of ${maxIntentos-1} attempts) `);
             }else if(numeroUsuario>numeroSecreto){
-                asignarTextoElemento('p',`El número secreto es menor <br/>(${intentos} de ${maxIntentos-1})`);
+                asignarTextoElemento('p',`The secret number is less <br/>(${intentos} out of ${maxIntentos-1} ${intentos===1 ? "attempt":"attempts"}) `);
             }else if(numeroUsuario===numeroSecreto){
-                asignarTextoElemento('p',`¡Acertaste el número en ${intentos} ${(intentos === 1) ? 'vez':'veces'}!`);
+                asignarTextoElemento('p',`You guessed the number in ${intentos} ${(intentos === 1) ? 'attempt':'attempts'}!`);
                 document.getElementById('reiniciar').removeAttribute('disabled');
                 estado = 0;
                 document.getElementById('botonOpcion').setAttribute('disabled',true); 
                 return; 
             }else{
-                asignarTextoElemento('p','Ingresa un valor');
+                asignarTextoElemento('p','Enter a value');
             }
             intentos ++; 
             limpiarCaja();
         }
         if(intentos==maxIntentos){
-        asignarTextoElemento('p',`No acertaste, el número era ${numeroSecreto} <br/> (${intentos - 1} de ${maxIntentos-1})`);
+        asignarTextoElemento('p',`You didn't guess it, the number was ${numeroSecreto} <br/> (${intentos - 1} out of ${maxIntentos-1} attempts)`);
         document.getElementById('reiniciar').removeAttribute('disabled');
         document.getElementById('botonOpcion').setAttribute('disabled',true);
         estado = 0;  
@@ -77,21 +77,21 @@ function generarNumeroSecreto(){
 function condicionesInicialesDificultad(){
     let form = document.getElementById("valorUsuario");
     let boton = document.getElementById('botonOpcion'); 
-    asignarTextoElemento('h1','Juego del número secreto');
-    asignarTextoElemento('p','Indica un nivel de dificultad: </br> 1. Facil (1 al 10) 2. Medio (1 al 100) </br> 3. Dificil (1 al 1000)');
+    asignarTextoElemento('h1','Guess the number game!');
+    asignarTextoElemento('p',"Indicate a difficulty level: </br> 1. Easy (1 to 10) </br> 2. Medium (1 to 100) </br> 3. Hard (1 to 1000)");
     document.getElementById('reiniciar').setAttribute('disabled',true);
-    boton.innerHTML = "Selecciona dificultad";
+    boton.innerHTML = "Select difficulty";
     form.setAttribute('max',3); 
     intentos = 1;
     boton.removeAttribute('disabled'); 
 }
 
 function condicionesInicialesJuego(){
-    asignarTextoElemento('p',`Indica un número del 1 al ${valorMaximo}`);
+    asignarTextoElemento('p',`Indicates a number from 1 to ${valorMaximo}`);
     limpiarCaja();
     numeroSecreto = generarNumeroSecreto();
     document.getElementById('reiniciar').setAttribute('disabled',true);
-    document.getElementById('botonOpcion').innerHTML = "Ingresa número"; 
+    document.getElementById('botonOpcion').innerHTML = "Enter number"; 
     document.getElementById('valorUsuario').setAttribute('max',valorMaximo); 
 }
 
@@ -107,6 +107,7 @@ function reiniciarJuego(){
 
 condicionesInicialesDificultad();
 
+alert("Welcome to my game \n\nHow to play? At the beginning, you will be asked to choose a difficulty level (from 1 to 3). If you choose a difficulty level outside of that range, it will default to easy. You must guess the number chosen by the computer. If the number you entered is lower, the game will let you know, as well as if it's higher. Enjoy the game!");
 
 
 
