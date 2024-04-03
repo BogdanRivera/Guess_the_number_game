@@ -107,6 +107,7 @@ function reiniciarJuego(){
 
 condicionesInicialesDificultad();
 
+alert("Welcome to my game \n\nHow to play? At the beginning, you will be asked to choose a difficulty level (from 1 to 3). If you choose a difficulty level outside of that range, it will default to easy. You must guess the number chosen by the computer. If the number you entered is lower, the game will let you know, as well as if it's higher. Enjoy the game!");
 
 
 

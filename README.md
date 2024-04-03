@@ -1,4 +1,4 @@
-# Guess the Number V1.0🎮
+# Guess the Number V2.0🎮
 
 Welcome to Guess the Number, an interactive game built with JavaScript, CSS, and HTML. Test your numeric skills and have fun trying to guess the secret number in three exciting difficulty levels.
 
