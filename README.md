@@ -1,4 +1,4 @@
-![correct](https://github.com/BogdanRivera/Guess_the_number_game/assets/121648408/369a89db-a9a0-4690-be21-76655e09292a)# Guess the Number V2.0🎮
+# Guess the Number V2.0🎮
 
 Welcome to Guess the Number, an interactive game built with JavaScript, CSS, and HTML. Test your numeric skills and have fun trying to guess the secret number in three exciting difficulty levels.
 
