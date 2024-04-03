@@ -1,0 +1,120 @@
+body{
+    background-image: url(../img/background.jpeg);
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.primary{
+    background-color: rgba(10, 114, 146, 0.788);
+    margin: 5%;
+    padding: 30px;
+    color: rgb(255, 255, 255);
+    font-family: "Workbench", sans-serif;
+    border-radius: 20px;
+}
+
+.secondary{
+    background-color: rgba(199, 199, 199, 0.719);
+    margin: 5%;
+    padding: 30px;
+    min-height: 400px;
+    color: rgb(6, 0, 14);
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 20px;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.container__input {
+    width: 50%;
+    height: 72px;
+    border-radius: 16px;
+    background-color: #FFF;
+    border: none;
+    color: #1875E8;
+    padding: 2rem;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+}
+
+.container__boton {
+    border-radius: 16px;
+    background: #1875E8;
+    padding: 16px 24px;
+    width: 100%;
+    font-size: 24px;
+    font-weight: 700;
+    border: none;
+    margin-top: 2rem;
+}
+
+.container__boton:hover {
+    background-color: tomato;
+    cursor: pointer;
+}
+
+.container__boton:disabled {
+    background: #898989;
+}
+
+.container__botones {
+    display: flex;
+    gap: 2em;
+}
+
+.seccion-oscura{
+    background-color: #1b1b32;
+    color: white;
+    min-height: 300px;
+}
+
+.network-icons a{
+    display: flex;
+    color: white;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    margin: 10px;
+    border: 2px solid white;
+    border-radius: 50%;
+    transition: all 0.2s ease-in;
+}
+
+.network-icons i{
+    font-size: 20px;
+}
+
+.network-icons a:hover{
+    background-color: white;
+    border: 2px solid rgb(13,110,253);
+}
+
+.network-icons a:hover i{
+    color: black; 
+}
+
+@media screen and (max-width: 500px) {
+    .container__botones {
+        display: flex;
+        gap: 0.3em;
+        flex-wrap: wrap;
+    }
+
+    .container__boton{
+        font-size: 20px;
+    }
+
+    .texto__parrafo{
+        font-size: 20px;
+    }
+
+    .author{
+        font-size: 10px;
+    }
+}
+
+
