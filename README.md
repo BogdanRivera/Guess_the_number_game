@@ -1,4 +1,15 @@
-# Guess the Number V2.0🎮
+<h1 align="center"> Guess the Number V2.0🎮 </h1>
+
+
+<p align="center">
+  <img src="https://github.com/BogdanRivera/Guess_the_number_game/assets/121648408/f8c35406-d116-485a-8fcc-5f3097e0add3" alt="Project logo">
+</p>
+
+   <p align="center">
+   <img src="https://img.shields.io/badge/STATUS-FINISHED-green">
+   </p>
+
+
 
 Welcome to Guess the Number, an interactive game built with JavaScript, CSS, and HTML. Test your numeric skills and have fun trying to guess the secret number in three exciting difficulty levels.
 
